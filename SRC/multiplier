@@ -1,0 +1,54 @@
+module multiplier_37 (
+    input [7:0] x0, x1, x2, x3, x4, x5, x6, x7, x8, x9,
+    input [7:0] x10,x11,x12,x13,x14,x15,x16,x17,x18,x19,
+    input [7:0] x20,x21,x22,x23,x24,x25,x26,x27,x28,x29,
+    input [7:0] x30,x31,x32,x33,x34,x35,x36,
+
+    output signed [15:0] y0, y1, y2, y3, y4, y5, y6, y7, y8, y9,
+    output signed [15:0] y10,y11,y12,y13,y14,y15,y16,y17,y18,y19,
+    output signed [15:0] y20,y21,y22,y23,y24,y25,y26,y27,y28,y29,
+    output signed [15:0] y30,y31,y32,y33,y34,y35,y36
+);
+
+assign y0  = x0  * 0;
+assign y1  = x1  * -46;
+assign y2  = x2  * -58;
+assign y3  = x3  * 60;
+assign y4  = x4  * 121;
+assign y5  = x5  * 170;
+assign y6  = x6  * 0;
+assign y7  = x7  * -314;
+assign y8  = x8  * -416;
+assign y9  = x9  * 0;
+
+assign y10 = x10 * 700;
+assign y11 = x11 * 900;
+assign y12 = x12 * 1200;
+assign y13 = x13 * 1510;
+assign y14 = x14 * 2015;
+assign y15 = x15 * 2015;
+assign y16 = x16 * 4390;
+assign y17 = x17 * 8970;
+assign y18 = x18 * 10922;
+assign y19 = x19 * 8970;
+
+assign y20 = x20 * 4390;
+assign y21 = x21 * 0;
+assign y22 = x22 * -2015;
+assign y23 = x23 * -1510;
+assign y24 = x24 * 0;
+assign y25 = x25 * 900;
+assign y26 = x26 * 700;
+assign y27 = x27 * 0;
+assign y28 = x28 * -416;
+assign y29 = x29 * -314;
+
+assign y30 = x30 * 0;
+assign y31 = x31 * 170;
+assign y32 = x32 * 121;
+assign y33 = x33 * 60;
+assign y34 = x34 * -58;
+assign y35 = x35 * -46;
+assign y36 = x36 * 0;
+
+endmodule
