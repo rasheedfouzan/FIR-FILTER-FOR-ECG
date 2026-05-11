@@ -1,0 +1,104 @@
+
+
+module delay_element_tb();
+
+// Inputs
+reg clk;
+reg reset;
+reg signed [7:0] x_in;
+
+// Outputs
+wire signed [7:0] x0, x1, x2, x3, x4, x5, x6, x7, x8, x9;
+wire signed [7:0] x10,x11,x12,x13,x14,x15,x16,x17,x18,x19;
+wire signed [7:0] x20,x21,x22,x23,x24,x25,x26,x27,x28,x29;
+wire signed [7:0] x30,x31,x32,x33,x34,x35,x36;
+
+// Instantiate DUT (Device Under Test)
+
+delay_element uut (
+    .clk(clk),
+    .reset(reset),
+    .x_in(x_in),
+
+    .x0(x0),   .x1(x1),   .x2(x2),   .x3(x3),   .x4(x4),
+    .x5(x5),   .x6(x6),   .x7(x7),   .x8(x8),   .x9(x9),
+
+    .x10(x10), .x11(x11), .x12(x12), .x13(x13), .x14(x14),
+    .x15(x15), .x16(x16), .x17(x17), .x18(x18), .x19(x19),
+
+    .x20(x20), .x21(x21), .x22(x22), .x23(x23), .x24(x24),
+    .x25(x25), .x26(x26), .x27(x27), .x28(x28), .x29(x29),
+
+    .x30(x30), .x31(x31), .x32(x32), .x33(x33), .x34(x34),
+    .x35(x35), .x36(x36)
+);
+
+//
+// Clock Generation
+//
+
+initial
+begin
+    clk = 0;
+    forever #5 clk = ~clk;
+end
+
+//
+// Test Sequence
+//
+
+initial
+begin
+
+    // Initialize
+    reset = 1;
+    x_in  = 0;
+
+    // Hold reset for some time
+    #20;
+
+    reset = 0;
+
+    // Apply input samples
+
+    #10 x_in = 8'sd10;
+    #10 x_in = 8'sd20;
+    #10 x_in = 8'sd30;
+    #10 x_in = 8'sd40;
+    #10 x_in = 8'sd50;
+    #10 x_in = 8'sd60;
+    #10 x_in = 8'sd70;
+    #10 x_in = 8'sd80;
+
+    // Negative values (to test signed operation)
+
+    #10 x_in = -8'sd10;
+    #10 x_in = -8'sd20;
+    #10 x_in = -8'sd30;
+
+    // More samples
+
+    #10 x_in = 8'sd15;
+    #10 x_in = 8'sd25;
+    #10 x_in = 8'sd35;
+
+    // Stop simulation
+
+    #200;
+    $stop;
+
+end
+
+//
+// Monitor values
+//
+
+initial
+begin
+    $monitor(
+        "Time=%0t | x_in=%d | x0=%d | x1=%d | x2=%d | x3=%d | x4=%d",
+        $time, x_in, x0, x1, x2, x3, x4
+    );
+end
+
+endmodule
