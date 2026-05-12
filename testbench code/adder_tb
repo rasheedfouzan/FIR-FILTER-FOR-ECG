@@ -1,0 +1,42 @@
+module tb_adder_37;
+
+reg signed [15:0] y0,y1,y2,y3,y4,y5,y6,y7,y8,y9;
+reg signed [15:0] y10,y11,y12,y13,y14,y15,y16,y17,y18,y19;
+reg signed [15:0] y20,y21,y22,y23,y24,y25,y26,y27,y28,y29;
+reg signed [15:0] y30,y31,y32,y33,y34,y35,y36;
+
+wire signed [23:0] y_out;
+
+adder_37 uut (
+    y0,y1,y2,y3,y4,y5,y6,y7,y8,y9,
+    y10,y11,y12,y13,y14,y15,y16,y17,y18,y19,
+    y20,y21,y22,y23,y24,y25,y26,y27,y28,y29,
+    y30,y31,y32,y33,y34,y35,y36,
+    y_out
+);
+
+initial begin
+    // SAME DATA FLOW (example based on multiplier results)
+    y0=0;
+    y1=-50;
+    y2=-80;
+    y3=-90;
+    y4=-60;
+    y5=0;
+    y6=60;
+    y7=80;
+    y8=160;
+    y9=150;
+
+    // rest = 0 for simplicity
+    y10=0; y11=0; y12=0; y13=0; y14=0;
+    y15=0; y16=0; y17=0; y18=0; y19=0;
+    y20=0; y21=0; y22=0; y23=0; y24=0;
+    y25=0; y26=0; y27=0; y28=0; y29=0;
+    y30=0; y31=0; y32=0; y33=0; y34=0;
+    y35=0; y36=0;
+
+    #20 $finish;
+end
+
+endmodule
